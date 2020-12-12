@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "podder-task-foundation-objects-image"
+version = "0.1.0"
+description = ""
+authors = ["Takaaki Mizuno <takaaki.mizuno@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.6"
+Pillow = "^8.0.1"
+numpy = "^1.19.4"
+podder-task-foundation = {path = "../podder-task-foundation"}
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+dump-env = "dump_env.cli:main"
+
+[tool.poetry.plugins]
+[tool.poetry.plugins."podder-task-foundation.objects"]
+"podder-task-foundation-objects-image" = "podder_task_foundation_objects_image:get_class"

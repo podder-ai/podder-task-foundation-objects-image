@@ -1,8 +1,9 @@
 from pathlib import Path
-from typing import Optional
+from typing import Optional, Tuple
 
 from PIL import Image as PILImage, ImageOps
 from podder_task_foundation.objects import LazyLoadFile
+import numpy
 
 
 class Image(LazyLoadFile):
@@ -26,7 +27,14 @@ class Image(LazyLoadFile):
         return self.to_str()
 
     def to_dict(self) -> dict:
-        return {}
+        size = self.get_size()
+        if size is None:
+            return {}
+        width, height = size
+        return {
+            "width": width,
+            "height": height,
+        }
 
     def to_repr(self) -> str:
         return "<Type: {} Format:{} Size:{} Mode:{}>".format(self.type, self.data.format,
@@ -47,3 +55,15 @@ class Image(LazyLoadFile):
             self.data.save(str(path))
 
         return True
+
+    def get(self, data_format: Optional[str] = None) -> Optional[object]:
+        if data_format == "numpy" or data_format == "opencv":
+            return numpy.array(self._data)
+        return self._data
+
+    def get_size(self) -> Optional[Tuple]:
+        image = self.data
+        if image is None:
+            return None
+
+        return image.size

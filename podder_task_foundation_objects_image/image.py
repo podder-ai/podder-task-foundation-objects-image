@@ -1,13 +1,16 @@
 from pathlib import Path
 from typing import Optional, Tuple
 
-from PIL import Image as PILImage, ImageOps
-from podder_task_foundation.objects import LazyLoadFile
 import numpy
+from PIL import Image as PILImage
+from PIL import ImageOps
+from podder_task_foundation.objects import LazyLoadFile
 
 
 class Image(LazyLoadFile):
-    supported_extensions = [".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"]
+    supported_extensions = [
+        ".png", ".jpg", ".jpeg", ".gif", ".webp", ".bmp", ".tif", ".tiff"
+    ]
     type = "image"
     default_extension = ".png"
 
@@ -37,12 +40,12 @@ class Image(LazyLoadFile):
         }
 
     def to_repr(self) -> str:
-        return "<Type: {} Format:{} Size:{} Mode:{}>".format(self.type, self.data.format,
-                                                             self.data.size, self.data.mode)
+        return "<Type: {} Format:{} Size:{} Mode:{}>".format(
+            self.type, self.data.format, self.data.size, self.data.mode)
 
     def to_str(self) -> str:
-        return "<Type: {} Format:{} Size:{} Mode:{}>".format(self.type, self.data.format,
-                                                             self.data.size, self.data.mode)
+        return "<Type: {} Format:{} Size:{} Mode:{}>".format(
+            self.type, self.data.format, self.data.size, self.data.mode)
 
     def _lazy_load(self):
         raw_data = PILImage.open(str(self._path))

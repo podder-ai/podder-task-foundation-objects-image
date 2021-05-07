@@ -1,7 +1,6 @@
-from collections import OrderedDict
 from pathlib import Path
 
-from podder_task_foundation_objects_image.image import Image
+from podder_task_foundation_objects_image import Image
 
 
 def test_image_create():

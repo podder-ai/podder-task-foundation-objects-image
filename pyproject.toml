@@ -1,19 +1,19 @@
 [tool.poetry]
 name = "podder-task-foundation-objects-image"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "Image object plugin for podder-task-foundation"
 authors = ["Takaaki Mizuno <takaaki.mizuno@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.6"
+python = "^3.6.2"
 Pillow = "^8.0.1"
 numpy = "^1.19.4"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
-podder-task-foundation = {git = "git://github.com/podder-ai/podder-task-foundation.git", rev = "main", tag = "0.2.0"}
 isort = "^5.8.0"
 yapf = "^0.31.0"
+podder-task-foundation = {git = "git://github.com/podder-ai/podder-task-foundation.git"}
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

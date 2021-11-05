@@ -1,9 +1,8 @@
 from pathlib import Path
-from typing import Optional, Tuple
+from typing import Optional, Tuple, Union
 
 import numpy
-from PIL import Image as PILImage
-from PIL import ImageOps
+from PIL import ImageOps, Image as PILImage
 from podder_task_foundation.objects import LazyLoadFile
 
 
@@ -15,12 +14,16 @@ class Image(LazyLoadFile):
     default_extension = ".png"
 
     def __init__(self,
-                 data: Optional[object] = None,
+                 data: Optional[Union[PILImage.Image, numpy.ndarray, numpy.generic]] = None,
                  path: Optional[Path] = None,
                  name: Optional[str] = None):
         raw_data = None
         if data is not None:
-            raw_data = ImageOps.exif_transpose(data)
+            if isinstance(data, PILImage.Image):
+                raw_data = ImageOps.exif_transpose(data)
+            elif isinstance(data, (numpy.ndarray, numpy.generic)):
+                raw_data = PILImage.fromarray(data)
+
         super().__init__(raw_data, path, name)
 
     def __repr__(self):

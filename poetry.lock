@@ -119,11 +119,11 @@ dev = ["pre-commit", "tox"]
 
 [[package]]
 name = "podder-task-foundation"
-version = "0.2.0"
-description = ""
+version = "0.2.6"
+description = "a framework for developing prediction pipeline of ML/AL models"
 category = "dev"
 optional = false
-python-versions = "^3.6"
+python-versions = "^3.6.2"
 develop = false
 
 [package.dependencies]
@@ -174,7 +174,7 @@ py = ">=1.5.0"
 wcwidth = "*"
 
 [package.extras]
-checkqa-mypy = ["mypy (v0.761)"]
+checkqa-mypy = ["mypy (==v0.761)"]
 testing = ["argcomplete", "hypothesis (>=3.56)", "mock", "nose", "requests", "xmlschema"]
 
 [[package]]
@@ -250,8 +250,8 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=1.2.3)", "pytest-flake8", "pyt
 
 [metadata]
 lock-version = "1.1"
-python-versions = "^3.6"
-content-hash = "4fb85b2e50043453cb8fda4ab46d963955df4a63691e2bd523eb964512a3f764"
+python-versions = "^3.6.2"
+content-hash = "11c6ccd95ae443e69d60115edf68f081b8caa3fa587bf16e5fa03631df72a1ab"
 
 [metadata.files]
 atomicwrites = [

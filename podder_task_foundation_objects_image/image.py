@@ -2,7 +2,8 @@ from pathlib import Path
 from typing import Optional, Tuple, Union
 
 import numpy
-from PIL import ImageOps, Image as PILImage
+from PIL import Image as PILImage
+from PIL import ImageOps
 from podder_task_foundation.objects import LazyLoadFile
 
 
@@ -14,9 +15,11 @@ class Image(LazyLoadFile):
     default_extension = ".png"
 
     def __init__(self,
-                 data: Optional[Union[PILImage.Image, numpy.ndarray, numpy.generic]] = None,
+                 data: Optional[Union[PILImage.Image, numpy.ndarray,
+                                      numpy.generic]] = None,
                  path: Optional[Path] = None,
-                 name: Optional[str] = None):
+                 name: Optional[str] = None,
+                 *args):
         raw_data = None
         if data is not None:
             if isinstance(data, PILImage.Image):
@@ -54,7 +57,12 @@ class Image(LazyLoadFile):
         raw_data = PILImage.open(str(self._path))
         self._data = ImageOps.exif_transpose(raw_data)
 
-    def save(self, path: Path) -> bool:
+    def save(self,
+             path: Path,
+             encoding: Optional[str] = 'utf-8',
+             indent: Optional[int] = None,
+             *args) -> bool:
+
         if path.suffix == ".jpg" or path.suffix == ".jpeg":
             self.data.save(str(path), quality=90)
         else:
@@ -62,7 +70,9 @@ class Image(LazyLoadFile):
 
         return True
 
-    def get(self, data_format: Optional[str] = None) -> Optional[object]:
+    def get(self,
+            data_format: Optional[str] = None,
+            *args) -> Optional[object]:
         if data_format == "numpy" or data_format == "opencv":
             return numpy.array(self._data)
         return self._data

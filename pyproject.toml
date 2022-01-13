@@ -7,7 +7,7 @@ authors = ["Takaaki Mizuno <takaaki.mizuno@gmail.com>"]
 [tool.poetry.dependencies]
 python = "^3.6.2"
 Pillow = "^8.0.1"
-numpy = "^1.19.4"
+numpy = "1.19.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

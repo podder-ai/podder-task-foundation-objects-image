@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "podder-task-foundation-objects-image"
-version = "0.1.1"
+version = "0.1.2"
 description = "Image object plugin for podder-task-foundation"
 authors = ["Takaaki Mizuno <takaaki.mizuno@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.6.2"
 Pillow = "^8.0.1"
-numpy = "^1.19.4"
+numpy = "1.19.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

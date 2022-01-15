@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "podder-task-foundation-objects-image"
-version = "0.1.2"
+version = "0.1.3"
 description = "Image object plugin for podder-task-foundation"
 authors = ["Takaaki Mizuno <takaaki.mizuno@gmail.com>"]
 

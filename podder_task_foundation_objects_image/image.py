@@ -4,7 +4,7 @@ from typing import Optional, Tuple, Union
 import numpy
 from PIL import Image as PILImage
 from PIL import ImageOps
-from podder_task_foundation.objects import LazyLoadFile
+from podder_task_foundation.objects.lazy_load_file import LazyLoadFile
 
 
 class Image(LazyLoadFile):
